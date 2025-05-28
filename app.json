@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "healthcarechatbot",
+    "slug": "healthcarechatbot",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.vetri.healthcarechatbot"
+    },
+    "android": {
+      "package": "com.vetri.healthcarechatbot",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "497d56a7-f07a-4a60-a630-6773f76bcc86"
+      }
+    }
+  }
+}
