@@ -14,3 +14,7 @@ web-build/
 *.key
 *.mobileprovision
 *.jks
+
+*.json
+credentials/
+.env
