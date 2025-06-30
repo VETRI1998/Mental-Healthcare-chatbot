@@ -1,46 +1,16 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
+# Python / FastAPI
+__pycache__/
+*.pyc
+venv/
+.env
 
-# dependencies
+# Expo / React Native
 node_modules/
-
-# Expo
 .expo/
 dist/
 web-build/
-expo-env.d.ts
-
-# Native
-*.orig.*
-*.jks
 *.p8
-*.p12
+*.json
 *.key
 *.mobileprovision
-
-# Metro
-.metro-health-check*
-
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
-
-# macOS
-.DS_Store
-*.pem
-
-# local env files
-.env*.local
-.env
-
-# typescript
-*.tsbuildinfo
-
-# Python / FastAPI
-venv/
-__pycache__/
-*.pyc
-
-# 🔐 Secrets / Credentials
-credentials/
-*.json
+*.jks
