@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -13,7 +13,6 @@ import {
 const BotScreen = () => {
   const [messages, setMessages] = useState([]);
   const [inputText, setInputText] = useState("");
-  const flatListRef = useRef(null);
 
   const sendMessage = async () => {
     if (!inputText.trim()) return;
@@ -23,7 +22,7 @@ const BotScreen = () => {
     setInputText("");
 
     try {
-      const response = await fetch("http://192.168.9.19:8000/chat", {
+      const response = await fetch("http://192.168.96.19:8000/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -43,13 +42,6 @@ const BotScreen = () => {
     }
   };
 
-  // Scroll to bottom whenever messages change
-  useEffect(() => {
-    if (flatListRef.current && messages.length > 0) {
-      flatListRef.current.scrollToEnd({ animated: true });
-    }
-  }, [messages]);
-
   const renderItem = ({ item }) => (
     <View
       style={[
@@ -64,16 +56,15 @@ const BotScreen = () => {
   return (
     <KeyboardAvoidingView
       style={styles.container}
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 90}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}  // Use "height" on Android
+      keyboardVerticalOffset={Platform.OS === "ios" ? 90 : 90} // Adjust this offset if needed
     >
       <FlatList
-        ref={flatListRef}                  // <-- Added ref here
         data={messages}
         renderItem={renderItem}
         keyExtractor={(_, index) => index.toString()}
         contentContainerStyle={styles.chatContainer}
-        keyboardShouldPersistTaps="handled"
+        keyboardShouldPersistTaps="handled" // important for keyboard interactions
       />
 
       <View style={styles.inputContainer}>
@@ -83,7 +74,7 @@ const BotScreen = () => {
           placeholder="Type a message..."
           style={styles.input}
           returnKeyType="send"
-          onSubmitEditing={sendMessage}
+          onSubmitEditing={sendMessage}  // Send on keyboard submit
         />
         <TouchableOpacity onPress={sendMessage} style={styles.sendButton}>
           <Text style={styles.sendButtonText}>Send</Text>
@@ -103,12 +94,14 @@ const styles = StyleSheet.create({
   chatContainer: {
     padding: 10,
     flexGrow: 1,
-    justifyContent: "flex-end",
+    
+    justifyContent: "flex-end", // Start chat scrolled to bottom
   },
   messageContainer: {
     maxWidth: "80%",
     borderRadius: 10,
     padding: 10,
+    
     marginVertical: 5,
   },
   userMessage: {
@@ -124,7 +117,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     lineHeight: 20,
     textAlign: "left",
-    fontFamily: "Arial",
+    fontFamily: "Arial", // Use a common font for better compatibility
   },
   inputContainer: {
     flexDirection: "row",

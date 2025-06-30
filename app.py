@@ -14,7 +14,7 @@ app.add_middleware(
 )
 
 # ⚠️ Use your OpenRouter API key securely (load from .env in production)
-api_key= "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"
+api_key= "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"
 
 def chat_with_bot(message: str) -> str:
     url = "https://openrouter.ai/api/v1/chat/completions"
@@ -27,7 +27,7 @@ def chat_with_bot(message: str) -> str:
         "messages": [
             {
                 "role": "system",
-                "content": "start the coversation with your name Dailo gpt,keep reply short and quick,You're a chill and casual Dailo gpt AI doctor .you're a licensed therapist, Keep reply in one line, friendly, and human-like. Just talk like a healthcare doctor."
+                "content": "You're a chill and casual AI friend. Keep replies short, friendly, and human-like. Don’t act like a therapist or teacher unless asked. Just talk like a normal guy."
             },
             {
                 "role": "user",
